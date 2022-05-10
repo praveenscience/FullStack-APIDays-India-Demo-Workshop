@@ -1,3 +1,3 @@
 <?php
-  echo "Hello API Days.";
+  echo $_GET["path"];
 ?>
