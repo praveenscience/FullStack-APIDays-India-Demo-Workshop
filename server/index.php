@@ -7,6 +7,9 @@
     case "index":
       echo json_encode($data);
       break;
+    case "time":
+      echo json_encode(time() * 1000);
+      break;
     default:
       http_response_code(404);
       echo "Error 404";
