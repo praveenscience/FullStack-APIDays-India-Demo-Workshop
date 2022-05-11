@@ -48,6 +48,28 @@
           case "comments":
             echo json_encode($data[intval($pathParts[0]) - 1]["comments"]);
             break;
+          case "edit":
+            if ($_SERVER['REQUEST_METHOD'] === "PUT") {
+              $newData = json_decode(file_get_contents("php://input"), true);
+              if (isset($newData["title"]) && !empty($newData["title"]) && isset($newData["body"]) && !empty($newData["body"])) {
+                $data[intval($pathParts[0]) - 1]["title"] = $newData["title"];
+                $data[intval($pathParts[0]) - 1]["body"] = $newData["body"];
+                if (file_put_contents("./data.json", json_encode($data))) {
+                  http_response_code(202);
+                  echo json_encode("Post #{$pathParts[0]} updated.");
+                } else {
+                  http_response_code(500);
+                  echo json_encode("Some error occurred.");
+                }
+              } else {
+                http_response_code(500);
+                echo json_encode("Both title and body are mandatory!");
+              }
+            } else {
+              http_response_code(404);
+              echo json_encode("Not Found!");
+            }
+            break;
           default:
             http_response_code(404);
             echo "Unknown action!";
