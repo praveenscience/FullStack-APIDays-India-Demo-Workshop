@@ -9,7 +9,8 @@
       echo json_encode($data);
       break;
     case is_numeric($path):
-      echo "Number Given: $path";
+    case is_numeric($pathParts[0]) && $pathParts[1] === "":
+      echo "Number Given: {$pathParts[0]}";
       break;
     case is_numeric($pathParts[0]):
       switch ($pathParts[1]) {
