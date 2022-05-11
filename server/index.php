@@ -18,14 +18,19 @@
       }
       break;
     case is_numeric($pathParts[0]):
-      switch ($pathParts[1]) {
-        case "comments":
-          echo json_encode($data[intval($pathParts[0]) - 1]["comments"]);
-          break;
-        default:
-          http_response_code(404);
-          echo "Unknown action!";
-          break;
+      if (isset($data[intval($pathParts[0]) - 1])) {
+        switch ($pathParts[1]) {
+          case "comments":
+            echo json_encode($data[intval($pathParts[0]) - 1]["comments"]);
+            break;
+          default:
+            http_response_code(404);
+            echo "Unknown action!";
+            break;
+        }
+      } else {
+        http_response_code(404);
+        echo json_encode("Not Found!");
       }
       break;
     case $path === "time":
