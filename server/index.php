@@ -23,6 +23,7 @@
           echo json_encode($data[intval($pathParts[0]) - 1]["comments"]);
           break;
         default:
+          http_response_code(404);
           echo "Unknown action!";
           break;
       }
