@@ -1,5 +1,1 @@
-[
-  { "title": "First Blog Post", "body": "This is the body of the first blog post.", "timestamp": 1652185500000, "comments": [] },
-  { "title": "Second Blog Post", "body": "This is the body of the second blog post.", "timestamp": 1652194800000, "comments": [] },
-  { "title": "Third Blog Post", "body": "This is the body of the third blog post.", "timestamp": 1652195400000, "comments": [] }
-]
+[{"title":"First Blog Post","body":"This is the body of the first blog post.","timestamp":1652185500000,"comments":[]},{"title":"Second Blog Post","body":"This is the body of the second blog post.","timestamp":1652194800000,"comments":[]},{"title":"Third Blog Post","body":"This is the body of the third blog post.","timestamp":1652195400000,"comments":[]},{"title":"New One","body":"Hey, this is a new post!","timestamp":1652252727000,"comments":[]}]

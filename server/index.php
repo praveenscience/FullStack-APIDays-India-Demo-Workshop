@@ -11,10 +11,22 @@
     case $path === "new":
       if ($_SERVER['REQUEST_METHOD'] === "POST") {
         if (isset($_POST["title"]) && !empty($_POST["title"]) && isset($_POST["body"]) && !empty($_POST["body"])) {
-          echo "Request Accepted";
+          $data[] = array(
+            "title" => $_POST["title"],
+            "body" => $_POST["body"],
+            "timestamp" => time() * 1000,
+            "comments" => array()
+          );
+          if (file_put_contents("./data.json", json_encode($data))) {
+            http_response_code(201);
+            echo json_encode("New post added.");
+          } else {
+            http_response_code(500);
+            echo json_encode("Some error occurred.");
+          }
         } else {
           http_response_code(500);
-          echo "Both title and body are mandatory!";
+          echo json_encode("Both title and body are mandatory!");
         }
       } else {
         http_response_code(404);
