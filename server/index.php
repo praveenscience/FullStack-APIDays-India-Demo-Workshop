@@ -9,7 +9,17 @@
       echo json_encode($data);
       break;
     case is_numeric($path):
-      echo "Number Given";
+      echo "Number Given: $path";
+      break;
+    case is_numeric($pathParts[0]):
+      switch ($pathParts[1]) {
+        case "comments":
+          echo "Comments for Post #{$pathParts[0]}";
+          break;
+        default:
+          echo "Unknown action!";
+          break;
+      }
       break;
     case $path === "time":
       echo json_encode(time() * 1000);
