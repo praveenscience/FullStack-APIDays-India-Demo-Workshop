@@ -9,7 +9,17 @@
       echo json_encode($data);
       break;
     case $path === "new":
-      echo "New?";
+      if ($_SERVER['REQUEST_METHOD'] === "POST") {
+        if (isset($_POST["title"]) && !empty($_POST["title"]) && isset($_POST["body"]) && !empty($_POST["body"])) {
+          echo "Request Accepted";
+        } else {
+          http_response_code(500);
+          echo "Both title and body are mandatory!";
+        }
+      } else {
+        http_response_code(404);
+        echo json_encode("Not Found!");
+      }
       break;
     case is_numeric($path):
     case is_numeric($pathParts[0]) && $pathParts[1] === "":
