@@ -8,6 +8,9 @@
     case $path === "index":
       echo json_encode($data);
       break;
+    case $path === "new":
+      echo "New?";
+      break;
     case is_numeric($path):
     case is_numeric($pathParts[0]) && $pathParts[1] === "":
       if (isset($data[intval($pathParts[0]) - 1])) {
