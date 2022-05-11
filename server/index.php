@@ -10,7 +10,12 @@
       break;
     case is_numeric($path):
     case is_numeric($pathParts[0]) && $pathParts[1] === "":
-      echo "Number Given: {$pathParts[0]}";
+      if (isset($data[intval($pathParts[0]) - 1])) {
+        echo json_encode($data[intval($pathParts[0]) - 1]);
+      } else {
+        http_response_code(404);
+        echo json_encode("Not Found!");
+      }
       break;
     case is_numeric($pathParts[0]):
       switch ($pathParts[1]) {
