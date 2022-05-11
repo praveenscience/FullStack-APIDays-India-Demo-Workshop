@@ -3,6 +3,7 @@
   $data = json_decode(file_get_contents("./data.json"), true);
   header("Content-type: application/json");
   $path = isset($_GET["path"]) && !empty($_GET["path"]) ? $_GET["path"] : "index";
+  $pathParts = explode("/", $path);
   switch(true) {
     case $path === "index":
       echo json_encode($data);
