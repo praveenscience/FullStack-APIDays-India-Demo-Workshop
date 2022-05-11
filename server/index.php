@@ -20,7 +20,7 @@
     case is_numeric($pathParts[0]):
       switch ($pathParts[1]) {
         case "comments":
-          echo "Comments for Post #{$pathParts[0]}";
+          echo json_encode($data[intval($pathParts[0]) - 1]["comments"]);
           break;
         default:
           echo "Unknown action!";
